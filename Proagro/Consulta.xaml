@@ -1,0 +1,24 @@
+﻿<Window x:Class="Proagro.Consulta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Proagro"
+        mc:Ignorable="d"
+        Title="Consulta" Height="300" Width="300" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="proagroEntitiesViewSource" d:DesignSource="{d:DesignInstance {x:Type local:proagroEntities}, CreateList=True}"/>
+        <CollectionViewSource x:Key="proagroEntitiescidadeViewSource" Source="{Binding cidade, Source={StaticResource proagroEntitiesViewSource}}"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource proagroEntitiescidadeViewSource}">
+        <DataGrid x:Name="cidadeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="21,17,29,172" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="estadoColumn" Binding="{Binding estado}" Header="estado" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding id}" Header="id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="nomeColumn" Binding="{Binding nome}" Header="nome" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="21,102,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+    </Grid>
+</Window>

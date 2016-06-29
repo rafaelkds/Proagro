@@ -1,0 +1,27 @@
+﻿<Window x:Class="Proagro.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Proagro"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="1000" Height="700" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:proagroDataSet x:Key="proagroDataSet"/>
+        <CollectionViewSource x:Key="cidadeViewSource" Source="{Binding cidade, Source={StaticResource proagroDataSet}}"/>
+    </Window.Resources>
+
+
+
+
+    <Grid x:Name="GridPrincipal" ScrollViewer.HorizontalScrollBarVisibility="Visible" DataContext="{StaticResource cidadeViewSource}" >
+        <DataGrid x:Name="cidadeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="156,365,436,104" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn1" Binding="{Binding id}" Header="id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="nomeColumn1" Binding="{Binding nome}" Header="nome" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="estadoColumn1" Binding="{Binding estado}" Header="estado" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

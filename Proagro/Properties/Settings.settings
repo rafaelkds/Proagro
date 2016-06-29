@@ -5,10 +5,10 @@
     <Setting Name="proagroConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Application Name=proagro;Database=proagro;Host=localhost;Password=180790;Port=5433;Username=postgres&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Database=proagro;Host=localhost;Password=180790;Port=5433;Username=postgres&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;Npgsql&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Application Name=proagro;Database=proagro;Host=localhost;Password=180790;Port=5433;Username=postgres</Value>
+      <Value Profile="(Default)">Database=proagro;Host=localhost;Password=180790;Port=5433;Username=postgres</Value>
     </Setting>
   </Settings>
 </SettingsFile>

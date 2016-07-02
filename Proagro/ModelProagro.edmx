@@ -1,0 +1,922 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="proagroModel.Store" Provider="Npgsql" ProviderManifestToken="9.5.3" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cidade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="text" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comissao">
+          <Key>
+            <PropertyRef Name="tipo_produto" />
+            <PropertyRef Name="tipo_vendedor" />
+          </Key>
+          <Property Name="tipo_produto" Type="int8" Nullable="false" />
+          <Property Name="tipo_vendedor" Type="int8" Nullable="false" />
+          <Property Name="porcentagem_maxima" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="porcentagem_minima" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="desconto_maximo" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="prazo_maximo" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedido">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="numero" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pessoa" Type="int8" Nullable="false" />
+          <Property Name="vendedor" Type="int8" Nullable="false" />
+          <Property Name="vendedor_comissao" Type="int8" Nullable="false" />
+          <Property Name="observacao" Type="varchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedido_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pedido" Type="int8" Nullable="false" />
+          <Property Name="produto" Type="int8" Nullable="false" />
+          <Property Name="valor" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="quantidade" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="quantidade_entregada" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="data_entrega" Type="date" Nullable="false" />
+          <Property Name="detalhes_entrega" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cpf_cnpj" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="rua" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="numero" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cidade" Type="int8" Nullable="false" />
+          <Property Name="cep" Type="varchar" MaxLength="9" />
+          <Property Name="complemento" Type="varchar" MaxLength="100" />
+          <Property Name="telefone" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="inscricao_estadual" Type="varchar" MaxLength="40" />
+          <Property Name="outras_informacoes" Type="text" />
+          <Property Name="culturas_areas" Type="text" />
+        </EntityType>
+        <EntityType Name="preco">
+          <Key>
+            <PropertyRef Name="produto" />
+            <PropertyRef Name="data" />
+          </Key>
+          <Property Name="produto" Type="int8" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="valor" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="text" Nullable="false" />
+          <Property Name="tipo_produto" Type="int8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="receber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pedido" Type="int8" Nullable="false" />
+          <Property Name="valor" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="receber_pagamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="receber" Type="int8" Nullable="false" />
+          <Property Name="valor" Type="numeric" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_vendedor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vendedor">
+          <Key>
+            <PropertyRef Name="pessoa" />
+          </Key>
+          <Property Name="pessoa" Type="int8" Nullable="false" />
+          <Property Name="tipo_vendedor" Type="int8" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_comissao_tipo_produto">
+          <End Role="tipo_produto" Type="Self.tipo_produto" Multiplicity="1" />
+          <End Role="comissao" Type="Self.comissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comissao">
+              <PropertyRef Name="tipo_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comissao_tipo_vendedor">
+          <End Role="tipo_vendedor" Type="Self.tipo_vendedor" Multiplicity="1" />
+          <End Role="comissao" Type="Self.comissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_vendedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comissao">
+              <PropertyRef Name="tipo_vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_produto_pedido">
+          <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+          <End Role="pedido_produto" Type="Self.pedido_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_produto">
+              <PropertyRef Name="pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_produto_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="pedido_produto" Type="Self.pedido_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_produto">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_vendedor">
+          <End Role="vendedor" Type="Self.vendedor" Multiplicity="1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vendedor">
+              <PropertyRef Name="pessoa" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_vendedor_comissao">
+          <End Role="vendedor" Type="Self.vendedor" Multiplicity="1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vendedor">
+              <PropertyRef Name="pessoa" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="vendedor_comissao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pessoa_cidade">
+          <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cidade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pessoa">
+              <PropertyRef Name="cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_preco_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="preco" Type="Self.preco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="preco">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_produto_tipo_produto">
+          <End Role="tipo_produto" Type="Self.tipo_produto" Multiplicity="1" />
+          <End Role="produto" Type="Self.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="tipo_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_receber_pagamento_receber">
+          <End Role="receber" Type="Self.receber" Multiplicity="1" />
+          <End Role="receber_pagamento" Type="Self.receber_pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="receber">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receber_pagamento">
+              <PropertyRef Name="receber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_receber_pedido">
+          <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+          <End Role="receber" Type="Self.receber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receber">
+              <PropertyRef Name="pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendedor_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="1" />
+          <End Role="vendedor" Type="Self.vendedor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendedor">
+              <PropertyRef Name="pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendedor_tipo_vendedor">
+          <End Role="tipo_vendedor" Type="Self.tipo_vendedor" Multiplicity="1" />
+          <End Role="vendedor" Type="Self.vendedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_vendedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendedor">
+              <PropertyRef Name="tipo_vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="proagroModelStoreContainer">
+          <EntitySet Name="cidade" EntityType="Self.cidade" Schema="public" store:Type="Tables" />
+          <EntitySet Name="comissao" EntityType="Self.comissao" Schema="public" store:Type="Tables" />
+          <EntitySet Name="pedido" EntityType="Self.pedido" Schema="public" store:Type="Tables" />
+          <EntitySet Name="pedido_produto" EntityType="Self.pedido_produto" Schema="public" store:Type="Tables" />
+          <EntitySet Name="pessoa" EntityType="Self.pessoa" Schema="public" store:Type="Tables" />
+          <EntitySet Name="preco" EntityType="Self.preco" Schema="public" store:Type="Tables" />
+          <EntitySet Name="produto" EntityType="Self.produto" Schema="public" store:Type="Tables" />
+          <EntitySet Name="receber" EntityType="Self.receber" Schema="public" store:Type="Tables" />
+          <EntitySet Name="receber_pagamento" EntityType="Self.receber_pagamento" Schema="public" store:Type="Tables" />
+          <EntitySet Name="tipo_produto" EntityType="Self.tipo_produto" Schema="public" store:Type="Tables" />
+          <EntitySet Name="tipo_vendedor" EntityType="Self.tipo_vendedor" Schema="public" store:Type="Tables" />
+          <EntitySet Name="vendedor" EntityType="Self.vendedor" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="fk_comissao_tipo_produto" Association="Self.fk_comissao_tipo_produto">
+            <End Role="tipo_produto" EntitySet="tipo_produto" />
+            <End Role="comissao" EntitySet="comissao" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comissao_tipo_vendedor" Association="Self.fk_comissao_tipo_vendedor">
+            <End Role="tipo_vendedor" EntitySet="tipo_vendedor" />
+            <End Role="comissao" EntitySet="comissao" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_pessoa" Association="Self.fk_pedido_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_produto_pedido" Association="Self.fk_pedido_produto_pedido">
+            <End Role="pedido" EntitySet="pedido" />
+            <End Role="pedido_produto" EntitySet="pedido_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_produto_produto" Association="Self.fk_pedido_produto_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="pedido_produto" EntitySet="pedido_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_vendedor" Association="Self.fk_pedido_vendedor">
+            <End Role="vendedor" EntitySet="vendedor" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_vendedor_comissao" Association="Self.fk_pedido_vendedor_comissao">
+            <End Role="vendedor" EntitySet="vendedor" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pessoa_cidade" Association="Self.fk_pessoa_cidade">
+            <End Role="cidade" EntitySet="cidade" />
+            <End Role="pessoa" EntitySet="pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="fk_preco_produto" Association="Self.fk_preco_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="preco" EntitySet="preco" />
+          </AssociationSet>
+          <AssociationSet Name="fk_produto_tipo_produto" Association="Self.fk_produto_tipo_produto">
+            <End Role="tipo_produto" EntitySet="tipo_produto" />
+            <End Role="produto" EntitySet="produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_receber_pagamento_receber" Association="Self.fk_receber_pagamento_receber">
+            <End Role="receber" EntitySet="receber" />
+            <End Role="receber_pagamento" EntitySet="receber_pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_receber_pedido" Association="Self.fk_receber_pedido">
+            <End Role="pedido" EntitySet="pedido" />
+            <End Role="receber" EntitySet="receber" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendedor_pessoa" Association="Self.fk_vendedor_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="vendedor" EntitySet="vendedor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendedor_tipo_vendedor" Association="Self.fk_vendedor_tipo_vendedor">
+            <End Role="tipo_vendedor" EntitySet="tipo_vendedor" />
+            <End Role="vendedor" EntitySet="vendedor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="proagroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cidade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="pessoa" Relationship="Self.fk_pessoa_cidade" FromRole="cidade" ToRole="pessoa" />
+        </EntityType>
+        <EntityType Name="comissao">
+          <Key>
+            <PropertyRef Name="tipo_produto" />
+            <PropertyRef Name="tipo_vendedor" />
+          </Key>
+          <Property Name="tipo_produto" Type="Int64" Nullable="false" />
+          <Property Name="tipo_vendedor" Type="Int64" Nullable="false" />
+          <Property Name="porcentagem_maxima" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="porcentagem_minima" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="desconto_maximo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="prazo_maximo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tipo_produto1" Relationship="Self.fk_comissao_tipo_produto" FromRole="comissao" ToRole="tipo_produto" />
+          <NavigationProperty Name="tipo_vendedor1" Relationship="Self.fk_comissao_tipo_vendedor" FromRole="comissao" ToRole="tipo_vendedor" />
+        </EntityType>
+        <EntityType Name="pedido">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pessoa" Type="Int64" Nullable="false" />
+          <Property Name="vendedor" Type="Int64" Nullable="false" />
+          <Property Name="vendedor_comissao" Type="Int64" Nullable="false" />
+          <Property Name="observacao" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="pessoa1" Relationship="Self.fk_pedido_pessoa" FromRole="pedido" ToRole="pessoa" />
+          <NavigationProperty Name="pedido_produto" Relationship="Self.fk_pedido_produto_pedido" FromRole="pedido" ToRole="pedido_produto" />
+          <NavigationProperty Name="vendedor1" Relationship="Self.fk_pedido_vendedor" FromRole="pedido" ToRole="vendedor" />
+          <NavigationProperty Name="vendedor2" Relationship="Self.fk_pedido_vendedor_comissao" FromRole="pedido" ToRole="vendedor" />
+          <NavigationProperty Name="receber" Relationship="Self.fk_receber_pedido" FromRole="pedido" ToRole="receber" />
+        </EntityType>
+        <EntityType Name="pedido_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pedido" Type="Int64" Nullable="false" />
+          <Property Name="produto" Type="Int64" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="quantidade" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="quantidade_entregada" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="data_entrega" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="detalhes_entrega" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pedido1" Relationship="Self.fk_pedido_produto_pedido" FromRole="pedido_produto" ToRole="pedido" />
+          <NavigationProperty Name="produto1" Relationship="Self.fk_pedido_produto_produto" FromRole="pedido_produto" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cpf_cnpj" Type="String" MaxLength="18" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cidade" Type="Int64" Nullable="false" />
+          <Property Name="cep" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="complemento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="inscricao_estadual" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="outras_informacoes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="culturas_areas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cidade1" Relationship="Self.fk_pessoa_cidade" FromRole="pessoa" ToRole="cidade" />
+          <NavigationProperty Name="pedido" Relationship="Self.fk_pedido_pessoa" FromRole="pessoa" ToRole="pedido" />
+          <NavigationProperty Name="vendedor" Relationship="Self.fk_vendedor_pessoa" FromRole="pessoa" ToRole="vendedor" />
+        </EntityType>
+        <EntityType Name="preco">
+          <Key>
+            <PropertyRef Name="produto" />
+            <PropertyRef Name="data" />
+          </Key>
+          <Property Name="produto" Type="Int64" Nullable="false" />
+          <Property Name="data" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="produto1" Relationship="Self.fk_preco_produto" FromRole="preco" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo_produto" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="pedido_produto" Relationship="Self.fk_pedido_produto_produto" FromRole="produto" ToRole="pedido_produto" />
+          <NavigationProperty Name="preco" Relationship="Self.fk_preco_produto" FromRole="produto" ToRole="preco" />
+          <NavigationProperty Name="tipo_produto1" Relationship="Self.fk_produto_tipo_produto" FromRole="produto" ToRole="tipo_produto" />
+        </EntityType>
+        <EntityType Name="receber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pedido" Type="Int64" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="data" Type="DateTime" Precision="0" Nullable="false" />
+          <NavigationProperty Name="pedido1" Relationship="Self.fk_receber_pedido" FromRole="receber" ToRole="pedido" />
+          <NavigationProperty Name="receber_pagamento" Relationship="Self.fk_receber_pagamento_receber" FromRole="receber" ToRole="receber_pagamento" />
+        </EntityType>
+        <EntityType Name="receber_pagamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="receber" Type="Int64" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="data" Type="DateTime" Precision="0" Nullable="false" />
+          <NavigationProperty Name="receber1" Relationship="Self.fk_receber_pagamento_receber" FromRole="receber_pagamento" ToRole="receber" />
+        </EntityType>
+        <EntityType Name="tipo_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="comissao" Relationship="Self.fk_comissao_tipo_produto" FromRole="tipo_produto" ToRole="comissao" />
+          <NavigationProperty Name="produto" Relationship="Self.fk_produto_tipo_produto" FromRole="tipo_produto" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="tipo_vendedor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="comissao" Relationship="Self.fk_comissao_tipo_vendedor" FromRole="tipo_vendedor" ToRole="comissao" />
+          <NavigationProperty Name="vendedor" Relationship="Self.fk_vendedor_tipo_vendedor" FromRole="tipo_vendedor" ToRole="vendedor" />
+        </EntityType>
+        <EntityType Name="vendedor">
+          <Key>
+            <PropertyRef Name="pessoa" />
+          </Key>
+          <Property Name="pessoa" Type="Int64" Nullable="false" />
+          <Property Name="tipo_vendedor" Type="Int64" Nullable="false" />
+          <Property Name="usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="pedido" Relationship="Self.fk_pedido_vendedor" FromRole="vendedor" ToRole="pedido" />
+          <NavigationProperty Name="pedido1" Relationship="Self.fk_pedido_vendedor_comissao" FromRole="vendedor" ToRole="pedido" />
+          <NavigationProperty Name="pessoa1" Relationship="Self.fk_vendedor_pessoa" FromRole="vendedor" ToRole="pessoa" />
+          <NavigationProperty Name="tipo_vendedor1" Relationship="Self.fk_vendedor_tipo_vendedor" FromRole="vendedor" ToRole="tipo_vendedor" />
+        </EntityType>
+        <Association Name="fk_pessoa_cidade">
+          <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cidade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pessoa">
+              <PropertyRef Name="cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comissao_tipo_produto">
+          <End Role="tipo_produto" Type="Self.tipo_produto" Multiplicity="1" />
+          <End Role="comissao" Type="Self.comissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comissao">
+              <PropertyRef Name="tipo_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_comissao_tipo_vendedor">
+          <End Role="tipo_vendedor" Type="Self.tipo_vendedor" Multiplicity="1" />
+          <End Role="comissao" Type="Self.comissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_vendedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comissao">
+              <PropertyRef Name="tipo_vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_produto_pedido">
+          <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+          <End Role="pedido_produto" Type="Self.pedido_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_produto">
+              <PropertyRef Name="pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_vendedor">
+          <End Role="vendedor" Type="Self.vendedor" Multiplicity="1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vendedor">
+              <PropertyRef Name="pessoa" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_vendedor_comissao">
+          <End Role="vendedor" Type="Self.vendedor" Multiplicity="1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vendedor">
+              <PropertyRef Name="pessoa" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="vendedor_comissao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_receber_pedido">
+          <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+          <End Role="receber" Type="Self.receber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receber">
+              <PropertyRef Name="pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pedido_produto_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="pedido_produto" Type="Self.pedido_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="pedido_produto">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendedor_pessoa">
+          <End Role="pessoa" Type="Self.pessoa" Multiplicity="1" />
+          <End Role="vendedor" Type="Self.vendedor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendedor">
+              <PropertyRef Name="pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_preco_produto">
+          <End Role="produto" Type="Self.produto" Multiplicity="1" />
+          <End Role="preco" Type="Self.preco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="preco">
+              <PropertyRef Name="produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_produto_tipo_produto">
+          <End Role="tipo_produto" Type="Self.tipo_produto" Multiplicity="1" />
+          <End Role="produto" Type="Self.produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="produto">
+              <PropertyRef Name="tipo_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_receber_pagamento_receber">
+          <End Role="receber" Type="Self.receber" Multiplicity="1" />
+          <End Role="receber_pagamento" Type="Self.receber_pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="receber">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receber_pagamento">
+              <PropertyRef Name="receber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vendedor_tipo_vendedor">
+          <End Role="tipo_vendedor" Type="Self.tipo_vendedor" Multiplicity="1" />
+          <End Role="vendedor" Type="Self.vendedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_vendedor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vendedor">
+              <PropertyRef Name="tipo_vendedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="proagroEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cidade" EntityType="Self.cidade" />
+          <EntitySet Name="comissao" EntityType="Self.comissao" />
+          <EntitySet Name="pedido" EntityType="Self.pedido" />
+          <EntitySet Name="pedido_produto" EntityType="Self.pedido_produto" />
+          <EntitySet Name="pessoa" EntityType="Self.pessoa" />
+          <EntitySet Name="preco" EntityType="Self.preco" />
+          <EntitySet Name="produto" EntityType="Self.produto" />
+          <EntitySet Name="receber" EntityType="Self.receber" />
+          <EntitySet Name="receber_pagamento" EntityType="Self.receber_pagamento" />
+          <EntitySet Name="tipo_produto" EntityType="Self.tipo_produto" />
+          <EntitySet Name="tipo_vendedor" EntityType="Self.tipo_vendedor" />
+          <EntitySet Name="vendedor" EntityType="Self.vendedor" />
+          <AssociationSet Name="fk_pessoa_cidade" Association="Self.fk_pessoa_cidade">
+            <End Role="cidade" EntitySet="cidade" />
+            <End Role="pessoa" EntitySet="pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comissao_tipo_produto" Association="Self.fk_comissao_tipo_produto">
+            <End Role="tipo_produto" EntitySet="tipo_produto" />
+            <End Role="comissao" EntitySet="comissao" />
+          </AssociationSet>
+          <AssociationSet Name="fk_comissao_tipo_vendedor" Association="Self.fk_comissao_tipo_vendedor">
+            <End Role="tipo_vendedor" EntitySet="tipo_vendedor" />
+            <End Role="comissao" EntitySet="comissao" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_pessoa" Association="Self.fk_pedido_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_produto_pedido" Association="Self.fk_pedido_produto_pedido">
+            <End Role="pedido" EntitySet="pedido" />
+            <End Role="pedido_produto" EntitySet="pedido_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_vendedor" Association="Self.fk_pedido_vendedor">
+            <End Role="vendedor" EntitySet="vendedor" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_vendedor_comissao" Association="Self.fk_pedido_vendedor_comissao">
+            <End Role="vendedor" EntitySet="vendedor" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="fk_receber_pedido" Association="Self.fk_receber_pedido">
+            <End Role="pedido" EntitySet="pedido" />
+            <End Role="receber" EntitySet="receber" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pedido_produto_produto" Association="Self.fk_pedido_produto_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="pedido_produto" EntitySet="pedido_produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendedor_pessoa" Association="Self.fk_vendedor_pessoa">
+            <End Role="pessoa" EntitySet="pessoa" />
+            <End Role="vendedor" EntitySet="vendedor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_preco_produto" Association="Self.fk_preco_produto">
+            <End Role="produto" EntitySet="produto" />
+            <End Role="preco" EntitySet="preco" />
+          </AssociationSet>
+          <AssociationSet Name="fk_produto_tipo_produto" Association="Self.fk_produto_tipo_produto">
+            <End Role="tipo_produto" EntitySet="tipo_produto" />
+            <End Role="produto" EntitySet="produto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_receber_pagamento_receber" Association="Self.fk_receber_pagamento_receber">
+            <End Role="receber" EntitySet="receber" />
+            <End Role="receber_pagamento" EntitySet="receber_pagamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vendedor_tipo_vendedor" Association="Self.fk_vendedor_tipo_vendedor">
+            <End Role="tipo_vendedor" EntitySet="tipo_vendedor" />
+            <End Role="vendedor" EntitySet="vendedor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="proagroModelStoreContainer" CdmEntityContainer="proagroEntities">
+          <EntitySetMapping Name="cidade">
+            <EntityTypeMapping TypeName="proagroModel.cidade">
+              <MappingFragment StoreEntitySet="cidade">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comissao">
+            <EntityTypeMapping TypeName="proagroModel.comissao">
+              <MappingFragment StoreEntitySet="comissao">
+                <ScalarProperty Name="tipo_produto" ColumnName="tipo_produto" />
+                <ScalarProperty Name="tipo_vendedor" ColumnName="tipo_vendedor" />
+                <ScalarProperty Name="porcentagem_maxima" ColumnName="porcentagem_maxima" />
+                <ScalarProperty Name="porcentagem_minima" ColumnName="porcentagem_minima" />
+                <ScalarProperty Name="desconto_maximo" ColumnName="desconto_maximo" />
+                <ScalarProperty Name="prazo_maximo" ColumnName="prazo_maximo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido">
+            <EntityTypeMapping TypeName="proagroModel.pedido">
+              <MappingFragment StoreEntitySet="pedido">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="pessoa" ColumnName="pessoa" />
+                <ScalarProperty Name="vendedor" ColumnName="vendedor" />
+                <ScalarProperty Name="vendedor_comissao" ColumnName="vendedor_comissao" />
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pedido_produto">
+            <EntityTypeMapping TypeName="proagroModel.pedido_produto">
+              <MappingFragment StoreEntitySet="pedido_produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pedido" ColumnName="pedido" />
+                <ScalarProperty Name="produto" ColumnName="produto" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="quantidade_entregada" ColumnName="quantidade_entregada" />
+                <ScalarProperty Name="data_entrega" ColumnName="data_entrega" />
+                <ScalarProperty Name="detalhes_entrega" ColumnName="detalhes_entrega" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pessoa">
+            <EntityTypeMapping TypeName="proagroModel.pessoa">
+              <MappingFragment StoreEntitySet="pessoa">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cpf_cnpj" ColumnName="cpf_cnpj" />
+                <ScalarProperty Name="rua" ColumnName="rua" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="inscricao_estadual" ColumnName="inscricao_estadual" />
+                <ScalarProperty Name="outras_informacoes" ColumnName="outras_informacoes" />
+                <ScalarProperty Name="culturas_areas" ColumnName="culturas_areas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="preco">
+            <EntityTypeMapping TypeName="proagroModel.preco">
+              <MappingFragment StoreEntitySet="preco">
+                <ScalarProperty Name="produto" ColumnName="produto" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="produto">
+            <EntityTypeMapping TypeName="proagroModel.produto">
+              <MappingFragment StoreEntitySet="produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="tipo_produto" ColumnName="tipo_produto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="receber">
+            <EntityTypeMapping TypeName="proagroModel.receber">
+              <MappingFragment StoreEntitySet="receber">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pedido" ColumnName="pedido" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="receber_pagamento">
+            <EntityTypeMapping TypeName="proagroModel.receber_pagamento">
+              <MappingFragment StoreEntitySet="receber_pagamento">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="receber" ColumnName="receber" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_produto">
+            <EntityTypeMapping TypeName="proagroModel.tipo_produto">
+              <MappingFragment StoreEntitySet="tipo_produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_vendedor">
+            <EntityTypeMapping TypeName="proagroModel.tipo_vendedor">
+              <MappingFragment StoreEntitySet="tipo_vendedor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vendedor">
+            <EntityTypeMapping TypeName="proagroModel.vendedor">
+              <MappingFragment StoreEntitySet="vendedor">
+                <ScalarProperty Name="pessoa" ColumnName="pessoa" />
+                <ScalarProperty Name="tipo_vendedor" ColumnName="tipo_vendedor" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

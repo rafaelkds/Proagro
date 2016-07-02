@@ -7,24 +7,6 @@
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="proagroConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="proagroConnectionString (Settings)" PropertyReference="ApplicationSettings.Proagro.Properties.Settings.GlobalReference.Default.proagroConnectionString" Provider="Npgsql" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="cidadeTableAdapter" GeneratorDataComponentClassName="cidadeTableAdapter" Name="cidade" UserDataComponentName="cidadeTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="proagroConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>select * from cidade</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="id" DataSetColumn="id" />
-              <Mapping SourceColumn="nome" DataSetColumn="nome" />
-              <Mapping SourceColumn="estado" DataSetColumn="estado" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="comissaoTableAdapter" GeneratorDataComponentClassName="comissaoTableAdapter" Name="comissao" UserDataComponentName="comissaoTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="proagroConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -247,30 +229,34 @@
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="cidadeTableAdapter" GeneratorDataComponentClassName="cidadeTableAdapter" Name="cidade" UserDataComponentName="cidadeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="proagroConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT  *
+FROM  cidade</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="estado" DataSetColumn="estado" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="proagroDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="proagroDataSet" msprop:Generator_UserDSName="proagroDataSet">
+  <xs:element name="proagroDataSet" msdata:IsDataSet="true" msdata:Locale="pt-BR" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="proagroDataSet" msprop:Generator_UserDSName="proagroDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="cidade" msprop:Generator_TableClassName="cidadeDataTable" msprop:Generator_TableVarName="tablecidade" msprop:Generator_RowChangedName="cidadeRowChanged" msprop:Generator_TablePropName="cidade" msprop:Generator_RowDeletingName="cidadeRowDeleting" msprop:Generator_RowChangingName="cidadeRowChanging" msprop:Generator_RowEvHandlerName="cidadeRowChangeEventHandler" msprop:Generator_RowDeletedName="cidadeRowDeleted" msprop:Generator_RowClassName="cidadeRow" msprop:Generator_UserTableName="cidade" msprop:Generator_RowEvArgName="cidadeRowChangeEvent">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
-              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome" type="xs:string" />
-              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="comissao" msprop:Generator_TableClassName="comissaoDataTable" msprop:Generator_TableVarName="tablecomissao" msprop:Generator_TablePropName="comissao" msprop:Generator_RowDeletingName="comissaoRowDeleting" msprop:Generator_RowChangingName="comissaoRowChanging" msprop:Generator_RowEvHandlerName="comissaoRowChangeEventHandler" msprop:Generator_RowDeletedName="comissaoRowDeleted" msprop:Generator_UserTableName="comissao" msprop:Generator_RowChangedName="comissaoRowChanged" msprop:Generator_RowEvArgName="comissaoRowChangeEvent" msprop:Generator_RowClassName="comissaoRow">
+        <xs:element name="comissao" msprop:Generator_TableClassName="comissaoDataTable" msprop:Generator_TableVarName="tablecomissao" msprop:Generator_RowChangedName="comissaoRowChanged" msprop:Generator_TablePropName="comissao" msprop:Generator_RowDeletingName="comissaoRowDeleting" msprop:Generator_RowChangingName="comissaoRowChanging" msprop:Generator_RowEvHandlerName="comissaoRowChangeEventHandler" msprop:Generator_RowDeletedName="comissaoRowDeleted" msprop:Generator_RowClassName="comissaoRow" msprop:Generator_UserTableName="comissao" msprop:Generator_RowEvArgName="comissaoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tipo_produto" msprop:Generator_ColumnVarNameInTable="columntipo_produto" msprop:Generator_ColumnPropNameInRow="tipo_produto" msprop:Generator_ColumnPropNameInTable="tipo_produtoColumn" msprop:Generator_UserColumnName="tipo_produto" type="xs:long" />
@@ -282,7 +268,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="pedido" msprop:Generator_TableClassName="pedidoDataTable" msprop:Generator_TableVarName="tablepedido" msprop:Generator_TablePropName="pedido" msprop:Generator_RowDeletingName="pedidoRowDeleting" msprop:Generator_RowChangingName="pedidoRowChanging" msprop:Generator_RowEvHandlerName="pedidoRowChangeEventHandler" msprop:Generator_RowDeletedName="pedidoRowDeleted" msprop:Generator_UserTableName="pedido" msprop:Generator_RowChangedName="pedidoRowChanged" msprop:Generator_RowEvArgName="pedidoRowChangeEvent" msprop:Generator_RowClassName="pedidoRow">
+        <xs:element name="pedido" msprop:Generator_TableClassName="pedidoDataTable" msprop:Generator_TableVarName="tablepedido" msprop:Generator_RowChangedName="pedidoRowChanged" msprop:Generator_TablePropName="pedido" msprop:Generator_RowDeletingName="pedidoRowDeleting" msprop:Generator_RowChangingName="pedidoRowChanging" msprop:Generator_RowEvHandlerName="pedidoRowChangeEventHandler" msprop:Generator_RowDeletedName="pedidoRowDeleted" msprop:Generator_RowClassName="pedidoRow" msprop:Generator_UserTableName="pedido" msprop:Generator_RowEvArgName="pedidoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
@@ -307,7 +293,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="pedido_produto" msprop:Generator_TableClassName="pedido_produtoDataTable" msprop:Generator_TableVarName="tablepedido_produto" msprop:Generator_TablePropName="pedido_produto" msprop:Generator_RowDeletingName="pedido_produtoRowDeleting" msprop:Generator_RowChangingName="pedido_produtoRowChanging" msprop:Generator_RowEvHandlerName="pedido_produtoRowChangeEventHandler" msprop:Generator_RowDeletedName="pedido_produtoRowDeleted" msprop:Generator_UserTableName="pedido_produto" msprop:Generator_RowChangedName="pedido_produtoRowChanged" msprop:Generator_RowEvArgName="pedido_produtoRowChangeEvent" msprop:Generator_RowClassName="pedido_produtoRow">
+        <xs:element name="pedido_produto" msprop:Generator_TableClassName="pedido_produtoDataTable" msprop:Generator_TableVarName="tablepedido_produto" msprop:Generator_RowChangedName="pedido_produtoRowChanged" msprop:Generator_TablePropName="pedido_produto" msprop:Generator_RowDeletingName="pedido_produtoRowDeleting" msprop:Generator_RowChangingName="pedido_produtoRowChanging" msprop:Generator_RowEvHandlerName="pedido_produtoRowChangeEventHandler" msprop:Generator_RowDeletedName="pedido_produtoRowDeleted" msprop:Generator_RowClassName="pedido_produtoRow" msprop:Generator_UserTableName="pedido_produto" msprop:Generator_RowEvArgName="pedido_produtoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
@@ -327,7 +313,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="pessoa" msprop:Generator_TableClassName="pessoaDataTable" msprop:Generator_TableVarName="tablepessoa" msprop:Generator_TablePropName="pessoa" msprop:Generator_RowDeletingName="pessoaRowDeleting" msprop:Generator_RowChangingName="pessoaRowChanging" msprop:Generator_RowEvHandlerName="pessoaRowChangeEventHandler" msprop:Generator_RowDeletedName="pessoaRowDeleted" msprop:Generator_UserTableName="pessoa" msprop:Generator_RowChangedName="pessoaRowChanged" msprop:Generator_RowEvArgName="pessoaRowChangeEvent" msprop:Generator_RowClassName="pessoaRow">
+        <xs:element name="pessoa" msprop:Generator_TableClassName="pessoaDataTable" msprop:Generator_TableVarName="tablepessoa" msprop:Generator_RowChangedName="pessoaRowChanged" msprop:Generator_TablePropName="pessoa" msprop:Generator_RowDeletingName="pessoaRowDeleting" msprop:Generator_RowChangingName="pessoaRowChanging" msprop:Generator_RowEvHandlerName="pessoaRowChangeEventHandler" msprop:Generator_RowDeletedName="pessoaRowDeleted" msprop:Generator_RowClassName="pessoaRow" msprop:Generator_UserTableName="pessoa" msprop:Generator_RowEvArgName="pessoaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
@@ -407,7 +393,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="preco" msprop:Generator_TableClassName="precoDataTable" msprop:Generator_TableVarName="tablepreco" msprop:Generator_TablePropName="preco" msprop:Generator_RowDeletingName="precoRowDeleting" msprop:Generator_RowChangingName="precoRowChanging" msprop:Generator_RowEvHandlerName="precoRowChangeEventHandler" msprop:Generator_RowDeletedName="precoRowDeleted" msprop:Generator_UserTableName="preco" msprop:Generator_RowChangedName="precoRowChanged" msprop:Generator_RowEvArgName="precoRowChangeEvent" msprop:Generator_RowClassName="precoRow">
+        <xs:element name="preco" msprop:Generator_TableClassName="precoDataTable" msprop:Generator_TableVarName="tablepreco" msprop:Generator_RowChangedName="precoRowChanged" msprop:Generator_TablePropName="preco" msprop:Generator_RowDeletingName="precoRowDeleting" msprop:Generator_RowChangingName="precoRowChanging" msprop:Generator_RowEvHandlerName="precoRowChangeEventHandler" msprop:Generator_RowDeletedName="precoRowDeleted" msprop:Generator_RowClassName="precoRow" msprop:Generator_UserTableName="preco" msprop:Generator_RowEvArgName="precoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="produto" msprop:Generator_ColumnVarNameInTable="columnproduto" msprop:Generator_ColumnPropNameInRow="produto" msprop:Generator_ColumnPropNameInTable="produtoColumn" msprop:Generator_UserColumnName="produto" type="xs:long" />
@@ -416,7 +402,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="produto" msprop:Generator_TableClassName="produtoDataTable" msprop:Generator_TableVarName="tableproduto" msprop:Generator_TablePropName="produto" msprop:Generator_RowDeletingName="produtoRowDeleting" msprop:Generator_RowChangingName="produtoRowChanging" msprop:Generator_RowEvHandlerName="produtoRowChangeEventHandler" msprop:Generator_RowDeletedName="produtoRowDeleted" msprop:Generator_UserTableName="produto" msprop:Generator_RowChangedName="produtoRowChanged" msprop:Generator_RowEvArgName="produtoRowChangeEvent" msprop:Generator_RowClassName="produtoRow">
+        <xs:element name="produto" msprop:Generator_TableClassName="produtoDataTable" msprop:Generator_TableVarName="tableproduto" msprop:Generator_RowChangedName="produtoRowChanged" msprop:Generator_TablePropName="produto" msprop:Generator_RowDeletingName="produtoRowDeleting" msprop:Generator_RowChangingName="produtoRowChanging" msprop:Generator_RowEvHandlerName="produtoRowChangeEventHandler" msprop:Generator_RowDeletedName="produtoRowDeleted" msprop:Generator_RowClassName="produtoRow" msprop:Generator_UserTableName="produto" msprop:Generator_RowEvArgName="produtoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
@@ -425,7 +411,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="receber" msprop:Generator_TableClassName="receberDataTable" msprop:Generator_TableVarName="tablereceber" msprop:Generator_TablePropName="receber" msprop:Generator_RowDeletingName="receberRowDeleting" msprop:Generator_RowChangingName="receberRowChanging" msprop:Generator_RowEvHandlerName="receberRowChangeEventHandler" msprop:Generator_RowDeletedName="receberRowDeleted" msprop:Generator_UserTableName="receber" msprop:Generator_RowChangedName="receberRowChanged" msprop:Generator_RowEvArgName="receberRowChangeEvent" msprop:Generator_RowClassName="receberRow">
+        <xs:element name="receber" msprop:Generator_TableClassName="receberDataTable" msprop:Generator_TableVarName="tablereceber" msprop:Generator_RowChangedName="receberRowChanged" msprop:Generator_TablePropName="receber" msprop:Generator_RowDeletingName="receberRowDeleting" msprop:Generator_RowChangingName="receberRowChanging" msprop:Generator_RowEvHandlerName="receberRowChangeEventHandler" msprop:Generator_RowDeletedName="receberRowDeleted" msprop:Generator_RowClassName="receberRow" msprop:Generator_UserTableName="receber" msprop:Generator_RowEvArgName="receberRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
@@ -435,7 +421,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="receber_pagamento" msprop:Generator_TableClassName="receber_pagamentoDataTable" msprop:Generator_TableVarName="tablereceber_pagamento" msprop:Generator_TablePropName="receber_pagamento" msprop:Generator_RowDeletingName="receber_pagamentoRowDeleting" msprop:Generator_RowChangingName="receber_pagamentoRowChanging" msprop:Generator_RowEvHandlerName="receber_pagamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="receber_pagamentoRowDeleted" msprop:Generator_UserTableName="receber_pagamento" msprop:Generator_RowChangedName="receber_pagamentoRowChanged" msprop:Generator_RowEvArgName="receber_pagamentoRowChangeEvent" msprop:Generator_RowClassName="receber_pagamentoRow">
+        <xs:element name="receber_pagamento" msprop:Generator_TableClassName="receber_pagamentoDataTable" msprop:Generator_TableVarName="tablereceber_pagamento" msprop:Generator_RowChangedName="receber_pagamentoRowChanged" msprop:Generator_TablePropName="receber_pagamento" msprop:Generator_RowDeletingName="receber_pagamentoRowDeleting" msprop:Generator_RowChangingName="receber_pagamentoRowChanging" msprop:Generator_RowEvHandlerName="receber_pagamentoRowChangeEventHandler" msprop:Generator_RowDeletedName="receber_pagamentoRowDeleted" msprop:Generator_RowClassName="receber_pagamentoRow" msprop:Generator_UserTableName="receber_pagamento" msprop:Generator_RowEvArgName="receber_pagamentoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
@@ -445,7 +431,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tipo_produto" msprop:Generator_TableClassName="tipo_produtoDataTable" msprop:Generator_TableVarName="tabletipo_produto" msprop:Generator_TablePropName="tipo_produto" msprop:Generator_RowDeletingName="tipo_produtoRowDeleting" msprop:Generator_RowChangingName="tipo_produtoRowChanging" msprop:Generator_RowEvHandlerName="tipo_produtoRowChangeEventHandler" msprop:Generator_RowDeletedName="tipo_produtoRowDeleted" msprop:Generator_UserTableName="tipo_produto" msprop:Generator_RowChangedName="tipo_produtoRowChanged" msprop:Generator_RowEvArgName="tipo_produtoRowChangeEvent" msprop:Generator_RowClassName="tipo_produtoRow">
+        <xs:element name="tipo_produto" msprop:Generator_TableClassName="tipo_produtoDataTable" msprop:Generator_TableVarName="tabletipo_produto" msprop:Generator_RowChangedName="tipo_produtoRowChanged" msprop:Generator_TablePropName="tipo_produto" msprop:Generator_RowDeletingName="tipo_produtoRowDeleting" msprop:Generator_RowChangingName="tipo_produtoRowChanging" msprop:Generator_RowEvHandlerName="tipo_produtoRowChangeEventHandler" msprop:Generator_RowDeletedName="tipo_produtoRowDeleted" msprop:Generator_RowClassName="tipo_produtoRow" msprop:Generator_UserTableName="tipo_produto" msprop:Generator_RowEvArgName="tipo_produtoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
@@ -453,7 +439,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="tipo_vendedor" msprop:Generator_TableClassName="tipo_vendedorDataTable" msprop:Generator_TableVarName="tabletipo_vendedor" msprop:Generator_TablePropName="tipo_vendedor" msprop:Generator_RowDeletingName="tipo_vendedorRowDeleting" msprop:Generator_RowChangingName="tipo_vendedorRowChanging" msprop:Generator_RowEvHandlerName="tipo_vendedorRowChangeEventHandler" msprop:Generator_RowDeletedName="tipo_vendedorRowDeleted" msprop:Generator_UserTableName="tipo_vendedor" msprop:Generator_RowChangedName="tipo_vendedorRowChanged" msprop:Generator_RowEvArgName="tipo_vendedorRowChangeEvent" msprop:Generator_RowClassName="tipo_vendedorRow">
+        <xs:element name="tipo_vendedor" msprop:Generator_TableClassName="tipo_vendedorDataTable" msprop:Generator_TableVarName="tabletipo_vendedor" msprop:Generator_RowChangedName="tipo_vendedorRowChanged" msprop:Generator_TablePropName="tipo_vendedor" msprop:Generator_RowDeletingName="tipo_vendedorRowDeleting" msprop:Generator_RowChangingName="tipo_vendedorRowChanging" msprop:Generator_RowEvHandlerName="tipo_vendedorRowChangeEventHandler" msprop:Generator_RowDeletedName="tipo_vendedorRowDeleted" msprop:Generator_RowClassName="tipo_vendedorRow" msprop:Generator_UserTableName="tipo_vendedor" msprop:Generator_RowEvArgName="tipo_vendedorRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
@@ -461,7 +447,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vendedor" msprop:Generator_TableClassName="vendedorDataTable" msprop:Generator_TableVarName="tablevendedor" msprop:Generator_TablePropName="vendedor" msprop:Generator_RowDeletingName="vendedorRowDeleting" msprop:Generator_RowChangingName="vendedorRowChanging" msprop:Generator_RowEvHandlerName="vendedorRowChangeEventHandler" msprop:Generator_RowDeletedName="vendedorRowDeleted" msprop:Generator_UserTableName="vendedor" msprop:Generator_RowChangedName="vendedorRowChanged" msprop:Generator_RowEvArgName="vendedorRowChangeEvent" msprop:Generator_RowClassName="vendedorRow">
+        <xs:element name="vendedor" msprop:Generator_TableClassName="vendedorDataTable" msprop:Generator_TableVarName="tablevendedor" msprop:Generator_RowChangedName="vendedorRowChanged" msprop:Generator_TablePropName="vendedor" msprop:Generator_RowDeletingName="vendedorRowDeleting" msprop:Generator_RowChangingName="vendedorRowChanging" msprop:Generator_RowEvHandlerName="vendedorRowChangeEventHandler" msprop:Generator_RowDeletedName="vendedorRowDeleted" msprop:Generator_RowClassName="vendedorRow" msprop:Generator_UserTableName="vendedor" msprop:Generator_RowEvArgName="vendedorRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="pessoa" msprop:Generator_ColumnVarNameInTable="columnpessoa" msprop:Generator_ColumnPropNameInRow="pessoa" msprop:Generator_ColumnPropNameInTable="pessoaColumn" msprop:Generator_UserColumnName="pessoa" type="xs:long" />
@@ -483,13 +469,24 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="cidade" msdata:Locale="pt-BR" msprop:Generator_TableClassName="cidadeDataTable" msprop:Generator_TableVarName="tablecidade" msprop:Generator_RowChangedName="cidadeRowChanged" msprop:Generator_TablePropName="cidade" msprop:Generator_RowDeletingName="cidadeRowDeleting" msprop:Generator_RowChangingName="cidadeRowChanging" msprop:Generator_RowEvHandlerName="cidadeRowChangeEventHandler" msprop:Generator_RowDeletedName="cidadeRowDeleted" msprop:Generator_RowClassName="cidadeRow" msprop:Generator_UserTableName="cidade" msprop:Generator_RowEvArgName="cidadeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:long" />
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome" type="xs:string" />
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:cidade" />
-      <xs:field xpath="mstns:id" />
-    </xs:unique>
-    <xs:unique name="comissao_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:comissao" />
       <xs:field xpath="mstns:tipo_produto" />
       <xs:field xpath="mstns:tipo_vendedor" />
@@ -534,6 +531,10 @@
     <xs:unique name="vendedor_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:vendedor" />
       <xs:field xpath="mstns:pessoa" />
+    </xs:unique>
+    <xs:unique name="pk_cidade" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:cidade" />
+      <xs:field xpath="mstns:id" />
     </xs:unique>
   </xs:element>
 </xs:schema>

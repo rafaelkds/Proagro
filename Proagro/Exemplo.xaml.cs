@@ -27,7 +27,9 @@ namespace Proagro
 
         private Proagro.proagroDataSetTableAdapters.cidadeTableAdapter proagroDataSetcidadeTableAdapter;
         private Proagro.proagroDataSet proagroDataSet;
-        System.Windows.Data.CollectionViewSource cidadeViewSource;
+        private System.Windows.Data.CollectionViewSource cidadeViewSource;
+
+        private proagroEntities proEnt;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {/*
@@ -40,11 +42,14 @@ namespace Proagro
 
 
 
-            /*Proagro.proagroDataSet*/ proagroDataSet = ((Proagro.proagroDataSet)(this.FindResource("proagroDataSet")));
+            /*Proagro.proagroDataSet*/
+            proagroDataSet = ((Proagro.proagroDataSet)(this.FindResource("proagroDataSet")));
             // Load data into the table cidade. You can modify this code as needed.
-            /*Proagro.proagroDataSetTableAdapters.cidadeTableAdapter*/ proagroDataSetcidadeTableAdapter = new Proagro.proagroDataSetTableAdapters.cidadeTableAdapter();
+            /*Proagro.proagroDataSetTableAdapters.cidadeTableAdapter*/
+            proagroDataSetcidadeTableAdapter = new Proagro.proagroDataSetTableAdapters.cidadeTableAdapter();
             proagroDataSetcidadeTableAdapter.Fill(proagroDataSet.cidade);
-            /*System.Windows.Data.CollectionViewSource*/ cidadeViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("cidadeViewSource")));
+            /*System.Windows.Data.CollectionViewSource*/
+            cidadeViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("cidadeViewSource")));
             cidadeViewSource.View.MoveCurrentToFirst();
 
             // Load data into the table pessoa. You can modify this code as needed.
@@ -52,12 +57,20 @@ namespace Proagro
             proagroDataSetpessoaTableAdapter.Fill(proagroDataSet.pessoa);
             System.Windows.Data.CollectionViewSource pessoaViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("pessoaViewSource")));
             pessoaViewSource.View.MoveCurrentToFirst();
-            
+
+
+            proEnt = new proagroEntities();
+
+            System.Windows.Data.CollectionViewSource proagroEntitiesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("proagroEntitiescidadeViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            proagroEntitiesViewSource.Source = proEnt.cidade.Where(x => x.id > -1).ToList();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            proagroDataSetcidadeTableAdapter.Adapter.Update(proagroDataSet.cidade);
+            proEnt.SaveChanges();
+            //proagroDataSetcidadeTableAdapter.Update(proagroDataSet.cidade);
+
         }
     }
 }

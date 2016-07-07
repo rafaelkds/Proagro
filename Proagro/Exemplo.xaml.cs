@@ -24,9 +24,9 @@ namespace Proagro
         {
             InitializeComponent();
         }
-
+        /*
         private Proagro.proagroDataSetTableAdapters.cidadeTableAdapter proagroDataSetcidadeTableAdapter;
-        private Proagro.proagroDataSet proagroDataSet;
+        private Proagro.proagroDataSet proagroDataSet;*/
         private System.Windows.Data.CollectionViewSource cidadeViewSource;
 
         private proagroEntities proEnt;
@@ -41,14 +41,14 @@ namespace Proagro
 
 
 
-
-            /*Proagro.proagroDataSet*/
+            /*
+            /*Proagro.proagroDataSet
             proagroDataSet = ((Proagro.proagroDataSet)(this.FindResource("proagroDataSet")));
             // Load data into the table cidade. You can modify this code as needed.
-            /*Proagro.proagroDataSetTableAdapters.cidadeTableAdapter*/
+            /*Proagro.proagroDataSetTableAdapters.cidadeTableAdapter
             proagroDataSetcidadeTableAdapter = new Proagro.proagroDataSetTableAdapters.cidadeTableAdapter();
             proagroDataSetcidadeTableAdapter.Fill(proagroDataSet.cidade);
-            /*System.Windows.Data.CollectionViewSource*/
+            /*System.Windows.Data.CollectionViewSource
             cidadeViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("cidadeViewSource")));
             cidadeViewSource.View.MoveCurrentToFirst();
 
@@ -56,7 +56,7 @@ namespace Proagro
             Proagro.proagroDataSetTableAdapters.pessoaTableAdapter proagroDataSetpessoaTableAdapter = new Proagro.proagroDataSetTableAdapters.pessoaTableAdapter();
             proagroDataSetpessoaTableAdapter.Fill(proagroDataSet.pessoa);
             System.Windows.Data.CollectionViewSource pessoaViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("pessoaViewSource")));
-            pessoaViewSource.View.MoveCurrentToFirst();
+            pessoaViewSource.View.MoveCurrentToFirst();*/
 
 
             proEnt = new proagroEntities();

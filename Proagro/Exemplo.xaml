@@ -7,9 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Width="1000" Height="700" Loaded="Window_Loaded">
     <Window.Resources>
-        <local:proagroDataSet x:Key="proagroDataSet"/>
-        <CollectionViewSource x:Key="cidadeViewSource" Source="{Binding cidade, Source={StaticResource proagroDataSet}}"/>
-        <CollectionViewSource x:Key="pessoaViewSource" Source="{Binding pessoa, Source={StaticResource proagroDataSet}}"/>
         <CollectionViewSource x:Key="proagroEntitiesViewSource" d:DesignSource="{d:DesignInstance {x:Type local:proagroEntities}, CreateList=True}"/>
         <CollectionViewSource x:Key="proagroEntitiescidadeViewSource" Source="{Binding cidade, Source={StaticResource proagroEntitiesViewSource}}"/>
     </Window.Resources>
@@ -17,31 +14,7 @@
 
 
 
-    <Grid x:Name="GridPrincipal" ScrollViewer.HorizontalScrollBarVisibility="Visible" DataContext="{StaticResource cidadeViewSource}" >
-        <DataGrid x:Name="cidadeDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="156,365,436,104" RowDetailsVisibilityMode="VisibleWhenSelected">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="idColumn1" Binding="{Binding id}" Header="id" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="nomeColumn1" Binding="{Binding nome}" Header="nome" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="estadoColumn1" Binding="{Binding estado}" Header="estado" Width="SizeToHeader"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="674,530,0,0" VerticalAlignment="Top">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label Content="id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="idTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="nome:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="nomeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding nome, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="estado:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
-            <TextBox x:Name="estadoTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding estado, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-        </Grid>
+    <Grid x:Name="GridPrincipal" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
         <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="78,606,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <DataGrid x:Name="cidadeDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource proagroEntitiescidadeViewSource}}" Margin="150,55,442,414" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>

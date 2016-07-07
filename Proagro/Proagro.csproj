@@ -80,8 +80,11 @@
     <Compile Include="comissao.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
-    <Compile Include="Consulta.xaml.cs">
-      <DependentUpon>Consulta.xaml</DependentUpon>
+    <Compile Include="Consulta\Pessoa.xaml.cs">
+      <DependentUpon>Pessoa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Janela.xaml.cs">
+      <DependentUpon>Janela.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelProagro.Context.cs">
       <AutoGen>True</AutoGen>
@@ -110,16 +113,6 @@
     <Compile Include="preco.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
-    <Compile Include="proagroDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>proagroDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="proagroDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>proagroDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="produto.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
@@ -141,7 +134,7 @@
     <Compile Include="vendedor.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
-    <Page Include="Consulta.xaml">
+    <Page Include="Consulta\Pessoa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,6 +150,10 @@
       <DependentUpon>Exemplo.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Janela.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UCPessoa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,28 +185,6 @@
       <DependentUpon>ModelProagro.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="proagroDataSet.xsc">
-      <DependentUpon>proagroDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="proagroDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>proagroDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="proagroDataSet.xss">
-      <DependentUpon>proagroDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="proagroDataSet1.xsc">
-      <DependentUpon>proagroDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="proagroDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>proagroDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="proagroDataSet1.xss">
-      <DependentUpon>proagroDataSet1.xsd</DependentUpon>
-    </None>
     <None Include="Properties\DataSources\proagroEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

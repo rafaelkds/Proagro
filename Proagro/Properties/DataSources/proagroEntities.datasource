@@ -7,6 +7,9 @@
 -->
 <GenericObjectDataSource DisplayName="proagroEntities" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
    <Children>
+      <GenericObjectDataSource DisplayName="pedido" Version="1.0">
+         <TypeInfo>Proagro.pedido, Proagro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+      </GenericObjectDataSource>
       <GenericObjectDataSource DisplayName="pessoa" Version="1.0">
          <TypeInfo>Proagro.pessoa, Proagro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
          <TypeUISetting>
@@ -36,6 +39,75 @@
                   <ControlSettings>
                      <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
                         <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+                     </ControlSetting>
+                  </ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+      <GenericObjectDataSource DisplayName="produto" Version="1.0">
+         <TypeInfo>Proagro.produto, Proagro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="id">
+                  <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+                        <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+                     </ControlSetting></ControlSettings>
+               </PropertyUISetting>
+               <PropertyUISetting Name="tipo_produto">
+                  <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+                        <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+                     </ControlSetting></ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+      <GenericObjectDataSource DisplayName="tipo_produto" Version="1.0">
+         <TypeInfo>Proagro.tipo_produto, Proagro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="id">
+                  <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+                        <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+                     </ControlSetting></ControlSettings>
+               </PropertyUISetting>
+               <PropertyUISetting Name="proagroEntities.produto.tipo_produto1">
+                  <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+                        <BindableControlInfo Name="Details" Type="Microsoft.VSDesigner.Data.DataForm.Windows.DetailView" />
+                     </ControlSetting></ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+      <GenericObjectDataSource DisplayName="tipo_vendedor" Version="1.0">
+         <TypeInfo>Proagro.tipo_vendedor, Proagro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="id">
+                  <ControlSettings>
+                     <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                        <BindableControlInfo Name="[None]" Type="Microsoft.VSDesigner.Data.BindManager.NoneControlPlaceHolder" />
+                     </ControlSetting>
+                  </ControlSettings>
+               </PropertyUISetting>
+            </PropertyUISettings>
+         </TypeUISetting>
+      </GenericObjectDataSource>
+      <GenericObjectDataSource DisplayName="vendedor" Version="1.0">
+         <TypeInfo>Proagro.vendedor, Proagro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeUISetting>
+            <PropertyUISettings>
+               <PropertyUISetting Name="senha">
+                  <ControlSettings>
+                     <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                        <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+                     </ControlSetting>
+                  </ControlSettings>
+               </PropertyUISetting>
+               <PropertyUISetting Name="usuario">
+                  <ControlSettings>
+                     <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+                        <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
                      </ControlSetting>
                   </ControlSettings>
                </PropertyUISetting>

@@ -14,21 +14,20 @@
     <Grid DataContext="{StaticResource proagroEntitiespessoaViewSource}">
         <Button x:Name="btSelecionar" Content="Selecionar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="btSelecionar_Click"/>
 
-        <DataGrid x:Name="pessoaDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,35,10,10" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="pessoaDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="10,35,10,10" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="bairroColumn" Binding="{Binding bairro}" Header="bairro" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="cepColumn" Binding="{Binding cep}" Header="cep" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="cidadeColumn" Binding="{Binding cidade}" Header="cidade" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="complementoColumn" Binding="{Binding complemento}" Header="complemento" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="cpf_cnpjColumn" Binding="{Binding cpf_cnpj}" Header="cpf cnpj" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="culturas_areasColumn" Binding="{Binding culturas_areas}" Header="culturas areas" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="emailColumn" Binding="{Binding email}" Header="email" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="inscricao_estadualColumn" Binding="{Binding inscricao_estadual}" Header="inscricao estadual" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="nomeColumn" Binding="{Binding nome}" Header="nome" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="numeroColumn" Binding="{Binding numero}" Header="numero" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="outras_informacoesColumn" Binding="{Binding outras_informacoes}" Header="outras informacoes" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="ruaColumn" Binding="{Binding rua}" Header="rua" Width="SizeToHeader"/>
-                <DataGridTextColumn x:Name="telefoneColumn" Binding="{Binding telefone}" Header="telefone" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="nomeColumn" Binding="{Binding nome}" Header="nome" Width="Auto"/>
+                <DataGridTextColumn x:Name="cpf_cnpjColumn" Binding="{Binding cpf_cnpj}" Header="cpf cnpj" Width="Auto"/>
+                <DataGridTextColumn x:Name="inscricao_estadualColumn" Binding="{Binding inscricao_estadual}" Header="inscricao estadual" Width="Auto"/>
+                <DataGridTextColumn x:Name="cidadeColumn" Binding="{Binding cidade1.nome}" Header="cidade" Width="Auto"/>
+                <DataGridTextColumn x:Name="estadoColumn" Binding="{Binding cidade1.estado}" Header="estado" Width="Auto"/>
+                <DataGridTextColumn x:Name="ruaColumn" Binding="{Binding rua}" Header="rua" Width="Auto"/>
+                <DataGridTextColumn x:Name="numeroColumn" Binding="{Binding numero}" Header="numero" Width="Auto"/>
+                <DataGridTextColumn x:Name="bairroColumn" Binding="{Binding bairro}" Header="bairro" Width="Auto"/>
+                <DataGridTextColumn x:Name="cepColumn" Binding="{Binding cep}" Header="cep" Width="Auto"/>
+                <DataGridTextColumn x:Name="complementoColumn" Binding="{Binding complemento}" Header="complemento" Width="Auto"/>
+                <DataGridTextColumn x:Name="telefoneColumn" Binding="{Binding telefone}" Header="telefone" Width="Auto"/>
+                <DataGridTextColumn x:Name="emailColumn" Binding="{Binding email}" Header="email" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
 

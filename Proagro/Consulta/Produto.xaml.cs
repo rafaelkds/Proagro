@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 namespace Proagro.Consulta
 {
     /// <summary>
-    /// Interaction logic for Pessoa.xaml
+    /// Interaction logic for Produto.xaml
     /// </summary>
-    public partial class Pessoa : Window
+    public partial class Produto : Window
     {
-        private bool selecionou = false;
+        private bool selecionou;
 
-        public Pessoa()
+        public Produto()
         {
             InitializeComponent();
         }
@@ -29,16 +29,16 @@ namespace Proagro.Consulta
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            System.Windows.Data.CollectionViewSource proagroEntitiesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("proagroEntitiespessoaViewSource")));
+            System.Windows.Data.CollectionViewSource proagroEntitiesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("proagroEntitiesprodutoViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
 
             var proEnt = new proagroEntities();
-            proagroEntitiesViewSource.Source = proEnt.pessoa.ToList();
+            proagroEntitiesViewSource.Source = proEnt.produto.ToList();
         }
 
         public long retornaSelecao()
         {
-            return selecionou ? (pessoaDataGrid.SelectedItem as pessoa).id : -1;
+            return selecionou ? (produtoDataGrid.SelectedItem as produto).id : -1;
         }
 
         private void btSelecionar_Click(object sender, RoutedEventArgs e)

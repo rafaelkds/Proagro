@@ -74,6 +74,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cadastro\ProdutoDataPreco.xaml.cs">
+      <DependentUpon>ProdutoDataPreco.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastro\UCProduto.xaml.cs">
+      <DependentUpon>UCProduto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastro\UCTipoProduto.xaml.cs">
+      <DependentUpon>UCTipoProduto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastro\UCTipoVendedor.xaml.cs">
+      <DependentUpon>UCTipoVendedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastro\UCVendedor.xaml.cs">
+      <DependentUpon>UCVendedor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="cidade.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
@@ -82,6 +97,9 @@
     </Compile>
     <Compile Include="Consulta\Pessoa.xaml.cs">
       <DependentUpon>Pessoa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta\Produto.xaml.cs">
+      <DependentUpon>Produto.xaml</DependentUpon>
     </Compile>
     <Compile Include="Janela.xaml.cs">
       <DependentUpon>Janela.xaml</DependentUpon>
@@ -128,13 +146,37 @@
     <Compile Include="tipo_vendedor.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
-    <Compile Include="UCPessoa.xaml.cs">
+    <Compile Include="Cadastro\UCPessoa.xaml.cs">
       <DependentUpon>UCPessoa.xaml</DependentUpon>
     </Compile>
     <Compile Include="vendedor.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
+    <Page Include="Cadastro\ProdutoDataPreco.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cadastro\UCProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cadastro\UCTipoProduto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cadastro\UCTipoVendedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cadastro\UCVendedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Consulta\Pessoa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consulta\Produto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,7 +196,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UCPessoa.xaml">
+    <Page Include="Cadastro\UCPessoa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

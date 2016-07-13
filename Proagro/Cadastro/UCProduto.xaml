@@ -1,0 +1,55 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Proagro.Cadastro"
+             xmlns:Proagro="clr-namespace:Proagro" x:Class="Proagro.Cadastro.UCProduto"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="proagroEntitiesViewSource" d:DesignSource="{d:DesignInstance {x:Type Proagro:proagroEntities}, CreateList=True}"/>
+        <CollectionViewSource x:Key="proagroEntitiesprodutoViewSource" Source="{Binding produto, Source={StaticResource proagroEntitiesViewSource}}"/>
+        <CollectionViewSource x:Key="proagroEntitiesprodutoprecoViewSource" Source="{Binding preco, Source={StaticResource proagroEntitiesprodutoViewSource}}"/>
+    </UserControl.Resources>
+    <StackPanel DataContext="{StaticResource proagroEntitiesprodutoViewSource}">
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btCarregar" Content="Carregar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btCarregar_Click"/>
+            <Button x:Name="btGravar" Content="Gravar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btGravar_Click"/>
+            <Button x:Name="btNovo" Content="Novo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btNovo_Click"/>
+        </StackPanel>
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="0,15,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="descricao:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="descricaoTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,3,0,3" Grid.Row="0" Text="{Binding descricao, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" CharacterCasing="Upper"/>
+            <Label Content="tipo produto:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <ComboBox x:Name="tipo_produtoComboBox" Grid.Column="1" DisplayMemberPath="descricao" HorizontalAlignment="Left" Height="Auto" SelectedValuePath="id" SelectedValue="{Binding tipo_produto}" Margin="3,3,0,3" Grid.Row="1" VerticalAlignment="Center" Width="Auto"/>
+            <Label x:Name="precoLabel" Content="preço:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox x:Name="precoTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3,3,0,3" Grid.Row="2" VerticalAlignment="Center" Width="120" PreviewTextInput="valorTextBox_PreviewTextInput" TextChanged="valorTextBox_TextChanged" TextAlignment="Right" Text="0,00"/>
+        </Grid>
+
+        <StackPanel x:Name="spPrecos" Background="#FFEAEAEA" Margin="3,15,0,0">
+            <Label Content="Preços:" />
+            <StackPanel Orientation="Horizontal" Margin="0">
+                <DatePicker x:Name="dataDatePicker" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
+                <TextBox x:Name="valorTextBox" HorizontalAlignment="Left" Height="23" Margin="3" VerticalAlignment="Center" Width="80" PreviewTextInput="valorTextBox_PreviewTextInput" TextChanged="valorTextBox_TextChanged" TextAlignment="Right" Text="0,00"/>
+                <Button x:Name="btAdicionarPreco" Content="Adicionar" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="btAdicionarPreco_Click" />
+            </StackPanel>
+            <DataGrid x:Name="precoDataGrid" HorizontalAlignment="Left" AutoGenerateColumns="False" EnableRowVirtualization="True" Height="300" ItemsSource="{Binding Source={StaticResource proagroEntitiesprodutoprecoViewSource}}" Margin="3,0,0,3" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="dataColumn" Binding="{Binding data}" Header="data" Width="Auto"/>
+                    <DataGridTextColumn x:Name="valorColumn" Binding="{Binding valor}" Header="valor" Width="Auto"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>

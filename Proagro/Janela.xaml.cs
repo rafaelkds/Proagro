@@ -32,12 +32,36 @@ namespace Proagro
         private void miCadastroPessoa_Click(object sender, RoutedEventArgs e)
         {
             GridPrincipal.Children.Clear();
-            GridPrincipal.Children.Add(new UCPessoa());
+            GridPrincipal.Children.Add(new Cadastro.UCPessoa());
         }
 
         private void miCadastroPedido_Click(object sender, RoutedEventArgs e)
         {
             GridPrincipal.Children.Clear();
+        }
+
+        private void miCadastroTipoProduto_Click(object sender, RoutedEventArgs e)
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Cadastro.UCTipoProduto());
+        }
+
+        private void miCadastroTipoVendedor_Click(object sender, RoutedEventArgs e)
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Cadastro.UCTipoVendedor());
+        }
+
+        private void miCadastroProduto_Click(object sender, RoutedEventArgs e)
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Cadastro.UCProduto());
+        }
+
+        private void miCadastroVendedor_Click(object sender, RoutedEventArgs e)
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Cadastro.UCVendedor());
         }
     }
 }

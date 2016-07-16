@@ -77,6 +77,9 @@
     <Compile Include="Cadastro\ProdutoDataPreco.xaml.cs">
       <DependentUpon>ProdutoDataPreco.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Cadastro\UCComissao.xaml.cs">
+      <DependentUpon>UCComissao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Cadastro\UCProduto.xaml.cs">
       <DependentUpon>UCProduto.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
     <Page Include="Cadastro\ProdutoDataPreco.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cadastro\UCComissao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

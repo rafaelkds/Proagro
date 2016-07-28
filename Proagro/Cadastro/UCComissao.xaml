@@ -50,28 +50,28 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="tipo_produtoColumn" Binding="{Binding tipo_produto1.descricao}" Header="tipo produto" Width="Auto"/>
                 <DataGridTextColumn x:Name="tipo_vendedorColumn" Binding="{Binding tipo_vendedor1.descricao}" Header="tipo vendedor" Width="Auto"/>
-                <DataGridTextColumn x:Name="porcentagem_minimaColumn" Binding="{Binding porcentagem_minima}" Header="comissão mínima" Width="Auto">
+                <DataGridTextColumn x:Name="porcentagem_minimaColumn" Binding="{Binding porcentagem_minima, StringFormat={}{0:0.0} %}" Header="comissão mínima" Width="Auto">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Right" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="porcentagem_maximaColumn" Binding="{Binding porcentagem_maxima}" Header="comissão máxima" Width="Auto">
+                <DataGridTextColumn x:Name="porcentagem_maximaColumn" Binding="{Binding porcentagem_maxima, StringFormat={}{0:0.0} %}" Header="comissão máxima" Width="Auto">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Right" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="desconto_maximoColumn" Binding="{Binding desconto_maximo}" Header="desconto máximo" Width="Auto">
+                <DataGridTextColumn x:Name="desconto_maximoColumn" Binding="{Binding desconto_maximo, StringFormat={}{0:0.0} %}" Header="desconto máximo" Width="Auto">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Right" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="prazo_maximoColumn" Binding="{Binding prazo_maximo}" Header="prazo máximo" Width="Auto">
+                <DataGridTextColumn x:Name="prazo_maximoColumn" Binding="{Binding prazo_maximo, StringFormat={}{0:0} dias}" Header="prazo máximo" Width="Auto">
                     <DataGridTextColumn.ElementStyle>
                         <Style>
                             <Setter Property="TextBlock.TextAlignment" Value="Right" />

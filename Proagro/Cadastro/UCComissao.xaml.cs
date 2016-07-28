@@ -33,10 +33,10 @@ namespace Proagro.Cadastro
             tipo_produtoComboBox.ItemsSource = proEnt.tipo_produto.ToList();
             tipo_vendedorComboBox.ItemsSource = proEnt.tipo_vendedor.ToList();
 
-            porcentagem_minimaColumn.Binding.StringFormat = "{0:0.0} %";
+            /*porcentagem_minimaColumn.Binding.StringFormat = "{0:0.0} %";
             porcentagem_maximaColumn.Binding.StringFormat = "{0:0.0} %";
             desconto_maximoColumn.Binding.StringFormat = "{0:0.0} %";
-            prazo_maximoColumn.Binding.StringFormat = "{0:0} dias";
+            prazo_maximoColumn.Binding.StringFormat = "{0:0} dias";*/
 
             // Do not load your data at design time.
             // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))

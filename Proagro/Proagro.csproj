@@ -80,6 +80,9 @@
     <Compile Include="Cadastro\UCComissao.xaml.cs">
       <DependentUpon>UCComissao.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Cadastro\UCPedido.xaml.cs">
+      <DependentUpon>UCPedido.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Cadastro\UCProduto.xaml.cs">
       <DependentUpon>UCProduto.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,9 @@
     </Compile>
     <Compile Include="comissao.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Consulta\Pedido.xaml.cs">
+      <DependentUpon>Pedido.xaml</DependentUpon>
     </Compile>
     <Compile Include="Consulta\Pessoa.xaml.cs">
       <DependentUpon>Pessoa.xaml</DependentUpon>
@@ -163,6 +169,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Cadastro\UCPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Cadastro\UCProduto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Cadastro\UCVendedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consulta\Pedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

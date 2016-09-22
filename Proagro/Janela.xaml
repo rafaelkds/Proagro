@@ -8,7 +8,7 @@
         Title="Janela" Height="500" Width="700" Loaded="Window_Loaded" WindowState="Maximized">
     <StackPanel>
         <Menu x:Name="menu" VerticalAlignment="Top">
-            <MenuItem Header="_Cadastro">
+            <MenuItem Header="Cadastro">
                 <MenuItem x:Name="miCadastroComissao" Header="Comissão" Click="miCadastroComissao_Click" />
                 <MenuItem x:Name="miCadastroPedido" Header="Pedido" Click="miCadastroPedido_Click" />
                 <MenuItem x:Name="miCadastroPessoa" Header="Pessoa" Click="miCadastroPessoa_Click" />
@@ -16,6 +16,9 @@
                 <MenuItem x:Name="miCadastroTipoProduto" Header="Tipo de Produto" Click="miCadastroTipoProduto_Click" />
                 <MenuItem x:Name="miCadastroTipoVendedor" Header="Tipo de Vendedor" Click="miCadastroTipoVendedor_Click" />
                 <MenuItem x:Name="miCadastroVendedor" Header="Vendedor" Click="miCadastroVendedor_Click" />
+            </MenuItem>
+            <MenuItem Header="Controle">
+                <MenuItem x:Name="miControleReceber" Header="Receber" Click="miControleReceber_Click" />
             </MenuItem>
         </Menu>
         <Grid x:Name="GridPrincipal" Margin="0,15,0,0"/>

@@ -27,15 +27,15 @@ namespace Proagro
     
         public virtual DbSet<cidade> cidade { get; set; }
         public virtual DbSet<comissao> comissao { get; set; }
-        public virtual DbSet<pedido> pedido { get; set; }
         public virtual DbSet<pedido_produto> pedido_produto { get; set; }
         public virtual DbSet<pessoa> pessoa { get; set; }
         public virtual DbSet<preco> preco { get; set; }
         public virtual DbSet<produto> produto { get; set; }
-        public virtual DbSet<receber> receber { get; set; }
-        public virtual DbSet<receber_pagamento> receber_pagamento { get; set; }
         public virtual DbSet<tipo_produto> tipo_produto { get; set; }
         public virtual DbSet<tipo_vendedor> tipo_vendedor { get; set; }
         public virtual DbSet<vendedor> vendedor { get; set; }
+        public virtual DbSet<pedido> pedido { get; set; }
+        public virtual DbSet<receber> receber { get; set; }
+        public virtual DbSet<receber_movimentos> receber_movimentos { get; set; }
     }
 }

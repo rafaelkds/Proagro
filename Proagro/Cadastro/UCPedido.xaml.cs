@@ -62,7 +62,9 @@ namespace Proagro.Cadastro
         {
             if(pedido_produtoDataGrid.SelectedIndex > -1)
             {
-                pedidoEdicao.pedido_produto.Remove(pedidoEdicao.pedido_produto.ElementAt(pedido_produtoDataGrid.SelectedIndex));
+                
+                proEnt.pedido_produto.Remove((pedido_produto)pedido_produtoDataGrid.SelectedItem);
+                //pedidoEdicao.pedido_produto.Remove(pedidoEdicao.pedido_produto.ElementAt(pedido_produtoDataGrid.SelectedIndex));
                 pedido_produtoDataGrid.Items.Refresh();
                 /*
                 System.Windows.Data.CollectionViewSource proagroEntitiesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("proagroEntitiespedidopedido_produtoViewSource")));
@@ -98,7 +100,8 @@ namespace Proagro.Cadastro
         {
             if (receberDataGrid.SelectedIndex > -1)
             {
-                pedidoEdicao.receber.Remove(pedidoEdicao.receber.ElementAt(receberDataGrid.SelectedIndex));
+                proEnt.receber.Remove((receber)receberDataGrid.SelectedItem);
+                //pedidoEdicao.receber.Remove(pedidoEdicao.receber.ElementAt(receberDataGrid.SelectedIndex));
                 receberDataGrid.Items.Refresh();
                 /*
                 System.Windows.Data.CollectionViewSource proagroEntitiesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("proagroEntitiespedidoreceberViewSource")));
@@ -177,6 +180,7 @@ namespace Proagro.Cadastro
             }*/
             if (((System.Windows.Data.CollectionViewSource)(this.FindResource("proagroEntitiespedidoViewSource"))).Source == null)
                 proEnt.pedido.Add(pedidoEdicao);
+            
             proEnt.SaveChanges();
         }
 

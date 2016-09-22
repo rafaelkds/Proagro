@@ -12,12 +12,14 @@ namespace Proagro
     using System;
     using System.Collections.Generic;
     
-    public partial class receber_pagamento
+    public partial class receber_movimentos
     {
         public long id { get; set; }
         public long receber { get; set; }
         public decimal valor { get; set; }
         public System.DateTime data { get; set; }
+        public string observacoes { get; set; }
+        public Nullable<System.DateTime> cancelado { get; set; }
     
         public virtual receber receber1 { get; set; }
     }

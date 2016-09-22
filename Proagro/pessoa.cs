@@ -36,8 +36,8 @@ namespace Proagro
         public string culturas_areas { get; set; }
     
         public virtual cidade cidade1 { get; set; }
+        public virtual vendedor vendedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pedido> pedido { get; set; }
-        public virtual vendedor vendedor { get; set; }
     }
 }

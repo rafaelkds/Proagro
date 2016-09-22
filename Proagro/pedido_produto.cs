@@ -23,7 +23,7 @@ namespace Proagro
         public System.DateTime data_entrega { get; set; }
         public string detalhes_entrega { get; set; }
     
-        public virtual pedido pedido1 { get; set; }
         public virtual produto produto1 { get; set; }
+        public virtual pedido pedido1 { get; set; }
     }
 }

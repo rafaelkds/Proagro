@@ -17,16 +17,20 @@ namespace Proagro
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public receber()
         {
-            this.receber_pagamento = new HashSet<receber_pagamento>();
+            this.receber_movimentos = new HashSet<receber_movimentos>();
         }
     
         public long id { get; set; }
         public long pedido { get; set; }
         public decimal valor { get; set; }
         public System.DateTime data { get; set; }
+        public Nullable<System.DateTime> pago { get; set; }
+        public Nullable<System.DateTime> cancelado { get; set; }
+        public Nullable<System.DateTime> protesto { get; set; }
+        public Nullable<System.DateTime> serasa { get; set; }
     
         public virtual pedido pedido1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<receber_pagamento> receber_pagamento { get; set; }
+        public virtual ICollection<receber_movimentos> receber_movimentos { get; set; }
     }
 }

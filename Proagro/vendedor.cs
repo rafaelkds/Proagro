@@ -26,11 +26,11 @@ namespace Proagro
         public string usuario { get; set; }
         public string senha { get; set; }
     
+        public virtual pessoa pessoa1 { get; set; }
+        public virtual tipo_vendedor tipo_vendedor1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pedido> pedido { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pedido> pedido1 { get; set; }
-        public virtual pessoa pessoa1 { get; set; }
-        public virtual tipo_vendedor tipo_vendedor1 { get; set; }
     }
 }

@@ -110,6 +110,9 @@
     <Compile Include="Consulta\Produto.xaml.cs">
       <DependentUpon>Produto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controle\UCReceber.xaml.cs">
+      <DependentUpon>UCReceber.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Janela.xaml.cs">
       <DependentUpon>Janela.xaml</DependentUpon>
     </Compile>
@@ -146,7 +149,7 @@
     <Compile Include="receber.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
-    <Compile Include="receber_pagamento.cs">
+    <Compile Include="receber_movimentos.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
     <Compile Include="tipo_produto.cs">
@@ -161,6 +164,7 @@
     <Compile Include="vendedor.cs">
       <DependentUpon>ModelProagro.tt</DependentUpon>
     </Compile>
+    <Compile Include="WPFConverter\DatetimeToBool.cs" />
     <Page Include="Cadastro\ProdutoDataPreco.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Consulta\Produto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controle\UCReceber.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

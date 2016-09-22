@@ -70,5 +70,11 @@ namespace Proagro
             GridPrincipal.Children.Clear();
             GridPrincipal.Children.Add(new Cadastro.UCComissao());
         }
+
+        private void miControleReceber_Click(object sender, RoutedEventArgs e)
+        {
+            GridPrincipal.Children.Clear();
+            GridPrincipal.Children.Add(new Controle.UCReceber());
+        }
     }
 }

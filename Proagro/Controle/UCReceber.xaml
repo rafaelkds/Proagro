@@ -1,0 +1,138 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:WPFConverter="clr-namespace:Proagro.WPFConverter"
+             xmlns:local="clr-namespace:Proagro.Controle"
+             xmlns:Proagro="clr-namespace:Proagro" x:Class="Proagro.Controle.UCReceber"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="900" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="proagroEntitiesViewSource" d:DesignSource="{d:DesignInstance {x:Type Proagro:proagroEntities}, CreateList=True}"/>
+        <CollectionViewSource x:Key="proagroEntitiesreceberViewSource" Source="{Binding receber, Source={StaticResource proagroEntitiesViewSource}}"/>
+        <CollectionViewSource x:Key="proagroEntitiesreceber_movimentosViewSource" Source="{Binding receber_movimentos, Source={StaticResource proagroEntitiesreceberViewSource}}"/>
+        <WPFConverter:DatetimeToBool x:Key="DatetimeToBool"/>
+
+        <Style x:Key="styleCancelado" TargetType="{x:Type TextBlock}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=cancelado, Mode=OneWay, Converter={StaticResource DatetimeToBool}}" Value="True">
+                    <Setter Property="TextDecorations" Value="Strikethrough"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel DataContext="{StaticResource proagroEntitiesreceberViewSource}">
+        <GroupBox Header="Filtros">
+            <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Margin="3" Background="#FFEAEAEA">
+                    <Label Content="pedido:" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
+                    <TextBox x:Name="filtroPedidoTextBox" HorizontalAlignment="Left" Height="23" Margin="3" VerticalAlignment="Center" Width="120"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3" Background="#FFEAEAEA">
+                    <Label Content="cliente:" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
+                    <Button x:Name="btSelecionarCliente" Content="Selecionar" HorizontalAlignment="Left" Margin="3,3,3,6" VerticalAlignment="Center" Width="75" Click="btSelecionarCliente_Click"/>
+                    <TextBlock x:Name="clienteTextBlock" HorizontalAlignment="Left" Height="23" Margin="3" VerticalAlignment="Center" Width="Auto"/>
+                    <Button x:Name="btRemoverCliente" Visibility="Collapsed" Content="Remover" HorizontalAlignment="Left" Margin="3,3,3,6" VerticalAlignment="Center" Width="75" Click="btRemoverCliente_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3" Background="#FFEAEAEA">
+                    <Label Content="emissão:" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
+                    <DatePicker x:Name="filtroDataEmissaoDatePicker" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
+                    <StackPanel Margin="0,0,3,0">
+                        <RadioButton GroupName="filtroDataEmissaoTipo" x:Name="filtroAteDataRadioButton" Content="Até esta data"/>
+                        <RadioButton GroupName="filtroDataEmissaoTipo" x:Name="filtroEstaDataRadioButton" Content="Só nesta data" IsChecked="True"/>
+                        <RadioButton GroupName="filtroDataEmissaoTipo" x:Name="filtroApartirDataRadioButton" Content="A partir desta data"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3" Background="#FFEAEAEA">
+                    <Label Content="vencimento:" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
+                    <DatePicker x:Name="filtroDataVencimentoDatePicker" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
+                    <StackPanel Margin="0,0,3,0">
+                        <RadioButton GroupName="filtroDataVencimentoTipo" x:Name="filtroAteVencimentoRadioButton" Content="Até esta data"/>
+                        <RadioButton GroupName="filtroDataVencimentoTipo" x:Name="filtroEsteVencimentoRadioButton" Content="Só nesta data" IsChecked="True"/>
+                        <RadioButton GroupName="filtroDataVencimentoTipo" x:Name="filtroApartirVencimentoRadioButton" Content="A partir desta data"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3" Background="#FFEAEAEA">
+                    <Label Content="vendedor:" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="filtroVendedorComboBox" DisplayMemberPath="Desc" HorizontalAlignment="Left" Height="Auto" SelectedValuePath="Id" Margin="3,3,3,3" Grid.Row="1" VerticalAlignment="Center" Width="Auto"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3" Background="#FFEAEAEA">
+                    <Label Content="situação:" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="filtroSituacaoComboBox"  DisplayMemberPath="Descricao" HorizontalAlignment="Left" Height="Auto" SelectedValuePath="Situacao" Margin="3,3,3,3" VerticalAlignment="Center" Width="Auto"/>
+                </StackPanel>
+
+                <Button x:Name="btBuscar" Content="Buscar" Width="75" Height="20" Margin="3" Click="btBuscar_Click"/>
+            </WrapPanel>
+        </GroupBox>
+
+        <Button x:Name="btCancelar" Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="3" Click="btCancelar_Click"/>
+
+        <DataGrid x:Name="receberDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="3" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" IsSynchronizedWithCurrentItem="True" MouseLeftButtonUp="receberDataGrid_MouseLeftButtonUp" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="pedidoColumn" Binding="{Binding pedido1.numero}" Header="pedido" Width="Auto" ElementStyle="{StaticResource styleCancelado}"/>
+                <DataGridTextColumn x:Name="clienteColumn" Binding="{Binding pedido1.pessoa1.nome}" Header="cliente" Width="Auto" ElementStyle="{StaticResource styleCancelado}"/>
+                <DataGridTextColumn x:Name="valorColumn" Binding="{Binding valor}" Header="valor" Width="Auto" ElementStyle="{StaticResource styleCancelado}"/>
+                <DataGridTextColumn x:Name="emissaoColumn" Binding="{Binding pedido1.data}" Header="emissão" Width="Auto" ElementStyle="{StaticResource styleCancelado}"/>
+                <DataGridTextColumn x:Name="vencimentoColumn" Binding="{Binding data}" Header="vencimento" Width="Auto" ElementStyle="{StaticResource styleCancelado}"/>
+                <DataGridCheckBoxColumn x:Name="protestoColumn" Binding="{Binding Path=protesto, Converter={StaticResource DatetimeToBool}}" Header="protesto" Width="Auto"/>
+                <DataGridCheckBoxColumn x:Name="serasaColumn" Binding="{Binding Path=serasa, Converter={StaticResource DatetimeToBool}}" Header="serasa" Width="Auto"/>
+                <DataGridCheckBoxColumn x:Name="pagoColumn" Binding="{Binding Path=pago, Converter={StaticResource DatetimeToBool}}" Header="pago" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+        <GroupBox Header="Baixas">
+            <StackPanel>
+                <Button x:Name="btCancelarBaixa" Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="3" Click="btCancelarBaixa_Click"/>
+
+                <DataGrid x:Name="receber_movimentosDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource proagroEntitiesreceber_movimentosViewSource}}" Margin="3" RowDetailsVisibilityMode="VisibleWhenSelected" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="dataColumn" Binding="{Binding data}" Header="data" Width="Auto" ElementStyle="{StaticResource styleCancelado}"/>
+                        <DataGridTextColumn x:Name="valorColumn1" Binding="{Binding valor}" Header="valor" Width="Auto" ElementStyle="{StaticResource styleCancelado}"/>
+                        <DataGridTextColumn x:Name="observacoesColumn" Binding="{Binding observacoes}" Header="observações" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="202"/>
+                        <ColumnDefinition Width="44"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="data:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center"/>
+                    <DatePicker x:Name="dataBaixaDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,0,4" Grid.Row="0" VerticalAlignment="Center"/>
+                    <Label Content="valor:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBox x:Name="valorBaixaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
+                    <Label Content="observações:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,50,0,50" Grid.Row="2" VerticalAlignment="Center"/>
+                    <TextBox x:Name="observacoesTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="120" Margin="3,3,0,3" Grid.Row="2" VerticalAlignment="Center" Width="240" AcceptsReturn="True" Grid.ColumnSpan="2"/>
+                </Grid>
+
+                <!--Grid x:Name="grid1" HorizontalAlignment="Left" Margin="3" VerticalAlignment="Top" DataContext="{StaticResource proagroEntitiesreceber_pagamentoViewSource}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="data:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                    <TextBox x:Name="dataTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding data, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    <Label Content="valor:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBox x:Name="valorTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding valor, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                </Grid-->
+
+                <Button x:Name="btAdicionarBaixa" Content="Adicionar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btAdicionarBaixa_Click"/>
+
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>
